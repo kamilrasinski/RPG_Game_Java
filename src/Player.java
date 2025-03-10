@@ -12,12 +12,12 @@ public class Player extends Character {
         super.setGold(0);
     }
 
-    public void levelUp(Player player){
-        player.setLevel(player.getLevel() + 1);
-        player.setHealthPoints(player.getHealthPoints() + 10);
-        player.setAttackPoints(player.getAttackPoints() + 10);
+    public void levelUp(){
+        this.setLevel(this.getLevel() + 1);
+        this.setHealthPoints(this.getHealthPoints() + 10);
+        this.setAttackPoints(this.getAttackPoints() + 10);
         this.experience = 0;
-        System.out.println("Level up! Current level: " + player.getLevel());
+        System.out.println("Level up! Current level: " + this.getLevel());
     }
 
     @Override

@@ -79,7 +79,7 @@ public class Game {
         player.setExperience(player.getExperience() + 10);
         System.out.println("Current experience: " + player.getExperience() + ".");
         if (player.getExperience() >= 50) {
-            player.levelUp(player);
+            player.levelUp();
         }
     }
 
