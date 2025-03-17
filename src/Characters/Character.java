@@ -1,3 +1,5 @@
+package Characters;
+
 import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
@@ -20,6 +22,7 @@ public class Character implements Serializable { //serialization allows to save 
         this.healthPoints = healthPoints;
         this.attackPoints = attackPoints;
         this.level = level;
+        this.gold = 0;
     }
 
     public void attack (Character opponent) {

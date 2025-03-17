@@ -1,3 +1,9 @@
+package Game;
+
+import Characters.Enemy;
+import Characters.Player;
+import UI.TextFormatter;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -6,10 +12,9 @@ public class Game {
     private boolean gameMenu;
     private boolean sessionMenu;
     private Player player;
-    Scanner input;
+    Scanner input = new Scanner(System.in);
 
-    public Game(Scanner input) { // Game initialization
-        this.input = input;
+    public Game() { // Game.Game initialization
         this.player = new Player("placeholder", 100, 10, 1, 0);
         this.gameMenu = true;
         this.sessionMenu = false;
@@ -36,7 +41,7 @@ public class Game {
         }
     }
 
-    public void showSessionMenu() { // Game session menu for choosing your actions
+    public void showSessionMenu() { // Game.Game session menu for choosing your actions
         sessionMenu = true;
         while (sessionMenu) {
             System.out.println(TextFormatter.getAnsiCyan("Please choose your action!"));
@@ -45,12 +50,12 @@ public class Game {
             input.nextLine(); // Clear buffer
 
             switch (sessionMenuAction) {
-                case 1 -> train();
+                case 1 -> player.train();
                 case 2 -> {
                     Battle battle = new Battle(input, player, new Enemy("Skeleton",100, 5, 20));
                     battle.start();
                 }
-                case 3 -> getStatistics();
+                case 3 -> player.getStatistics();
                 case 4 -> saveGame(player);
                 case 5 -> quitSession();
             }
@@ -61,6 +66,7 @@ public class Game {
         player.setHealthPoints(100);
         player.setAttackPoints(10);
         player.setLevel(1);
+        player.setGold(0);
         System.out.println("Enter your name: ");
         player.setName(input.nextLine());
         System.out.println("Your name is " + player.getName() + "! Welcome!");
@@ -75,22 +81,10 @@ public class Game {
         gameMenu = false;
     }
 
-    public void train() {
-        player.setExperience(player.getExperience() + 10);
-        System.out.println("Current experience: " + player.getExperience() + ".");
-        if (player.getExperience() >= 50) {
-            player.levelUp();
-        }
-    }
-
     public void quitSession() {
         System.out.println(TextFormatter.getAnsiBlue("End of session!"));
         sessionMenu = false;
         gameMenu = true;
-    }
-
-    public void getStatistics() {
-        System.out.println(player.toString());
     }
 
     public void saveGame(Player player) {

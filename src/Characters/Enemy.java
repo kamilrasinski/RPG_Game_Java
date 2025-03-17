@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+package Characters;
 
 public class Enemy extends Character {
 
@@ -7,7 +6,5 @@ public class Enemy extends Character {
         super (name, healthPoints, level, attackPoints);
         this.setGold((int) (Math.random() * 100) + 10);
     }
-
-   // private static List<String> enemyTypes = Arrays.asList("Skeleton", "Dragon", "Wolf");
 
 }

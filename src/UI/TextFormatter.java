@@ -1,3 +1,5 @@
+package UI;
+
 public class TextFormatter {
 
     public static final String ANSI_YELLOW = "\u001B[33m";

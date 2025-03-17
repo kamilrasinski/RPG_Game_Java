@@ -1,3 +1,6 @@
+package Characters;
+
+import UI.TextFormatter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +12,6 @@ public class Player extends Character {
     public Player(String name, int healthPoints, int attackPoints, int level, int experience) {
         super(name, healthPoints, attackPoints, level);
         this.experience = experience;
-        super.setGold(0);
     }
 
     public void levelUp(){
@@ -20,9 +22,21 @@ public class Player extends Character {
         System.out.println("Level up! Current level: " + this.getLevel());
     }
 
+    public void train() {
+        this.setExperience(this.getExperience() + 10);
+        System.out.println("Current experience: " + this.getExperience() + ".");
+        if (this.getExperience() >= 50) {
+            this.levelUp();
+        }
+    }
+
+    public void getStatistics() {
+        System.out.println(this.toString());
+    }
+
     @Override
     public String toString() {
-        return "Player: " + "\n" +
+        return "Characters.Player: " + "\n" +
                 "1. Name: " + super.getName() + "\n" +
                 "2. Level: " + super.getLevel() + "\n" +
                 "3. Health Points: " + TextFormatter.getAnsiRed(String.valueOf(super.getHealthPoints())) + "\n" +
